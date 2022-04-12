@@ -24,7 +24,7 @@
 
         public void RespawnTicketChecker(RespawningTeamEventArgs ev)
         {
-            if (BetterRespawn.Instance.Config.RespawnTeams == true)
+            if (BetterRespawn.Instance.Config.RespawnTeams)
             {
                 SpawnableTeamType team = ev.NextKnownTeam;
                 Timing.CallDelayed(1.5f, () =>
@@ -36,7 +36,7 @@
                         while (tickets > 0 && wait_list.IsEmpty() == false)
                         {
                             Player ply = wait_list.Dequeue();
-                            if (ply.IsDead == true && !ply.IsOverwatchEnabled)
+                            if (ply.IsDead && !ply.IsOverwatchEnabled)
                             {
                                 if (BetterRespawn.Instance.Config.debug) { Log.Debug($"Spawning {ply.Nickname} at {tickets} tickets"); }
                                 if (tickets >= 15)
@@ -64,7 +64,7 @@
                         while (tickets > 0 && wait_list.IsEmpty() == false)
                         {
                             Player ply = wait_list.Dequeue();
-                            if (ply.IsDead == true && !ply.IsOverwatchEnabled)
+                            if (ply.IsDead && !ply.IsOverwatchEnabled)
                             {
                                 if (BetterRespawn.Instance.Config.debug) { Log.Debug($"Spawning {ply.Nickname} at {tickets} tickets"); }
                                 if (tickets >= 15)
